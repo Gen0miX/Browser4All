@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a, h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #ffffff;
+    text-decoration: none;
+}
+h2 {
+    font-family:"Montserrat",sans-serif;
+    font-weight: 600;
+    font-size : 20px;
+    text-decoration: none;
+    margin:0 0 0.5em 0;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px ;
+    background-color: #005bbe;
+}
+
+body {
+    min-height: 300px;
+    min-width: 450px;
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    background-color: #005bbe;
+    margin: 5px;
+}
+
+.titre {
+    margin-right: auto;
+}
+
+.logo {
+    margin-right: 5%;
+    width: 54px;
+    height: 54px;
+}
+
+.nav_links {
+    list-style: none
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.icon {
+    display: block;
+    fill: #ffffff;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease 0s;
+}
+
+.icon:hover path {
+    fill: #ee7c00;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+}
+
+.filters div {
+    padding: 10px;
+}
+
+.filter_zoom {
+    align-items: center;
+    text-align: center;
+}
+
+.button_int {
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:"Montserrat", sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color: #005bbe;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.button_int:hover {
+    border-color: rgba(0,0,0,1);
+    background-color: #ee7c00;
+}
+
+@media all and (min-width:30em) {
+    a.button_int {
+        display: block;
+        margin: 0.2em auto;
+    }
+}
+
+.div_delete {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-style: solid;
+    border-radius:2em;
+    border-color: rgba(0,0,0,0.3);
+    margin: 0 10em;
+}
+
+.div_delete button {
+    width: 60%;
+}
+
+#activer_element_suppr {
+    display: flex;
+}
+
+
+#desactiver_element_suppr {
+    display: none;
+}

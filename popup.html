@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser4All</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="scripts/jquery-3.5.1.js"></script>
+    <script src="scripts/svg.js"></script>
+    <script src="scripts/popup.js"></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="icon/browser4allsimple.svg" alt="logo">
+        <h1 class="titre">Browser4All</h1>
+        <nav>
+            <ul class="nav_links">
+                <li><a id="go-to-options"><img id="option-icon" class="icon" src="icon/option.svg" alt="Bouton option"/></a></li>
+                <li><a id="close-popup"><img id="cancel-icon" class="icon" src="icon/annuler.svg" alt="Bouton annuler"/></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="filters">
+        <div class="filter_zoom">
+            <h2>Zoom</h2>
+            <button id="zoomIn" class="button_int">Zoom in</button>
+            <button id="zoomOut" class="button_int">Zoom out</button>
+            <button id="refresh" class="button_int">Refresh</button>
+        </div>
+        <div id="activer_element_suppr" class="div_delete">
+            <button id="activate_del_elem" class="button_int">Activer</button>
+            <p>Activer/Désactiver l'option pour supprimer un élément de la page</p>
+        </div>
+        <div id="desactiver_element_suppr" class="div_delete">
+            <button id="desactiver_del_elem" class="button_int">Désactiver</button>
+            <p>Activer/Désactiver l'option pour supprimer un élément de la page</p>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+</html>

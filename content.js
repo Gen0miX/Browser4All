@@ -14,7 +14,7 @@ if (performance.navigation.type == 1) {
     chrome.runtime.sendMessage("pageRefreshed");
 }
 
-
+//Permet de recevoir et réagir à tous les messages envoyés par nos popups ou notre background script
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     switch(request.toString()) {
         case 'zoomIn' :
@@ -30,6 +30,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             activateDelete();
             sendResponse(toggle);
             break;
+        case 'des_delete' :
+            activateDelete();
+            annulerDelete();
+            sendResponse(toggle);
         case 'tabChanged' :
             toggle=true;
             activateDelete();
@@ -49,17 +53,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
+//Augmente ou diminue le zoom de la page
 let updateZoom = function(zoom) {
     zoomLevel += zoom;
     $('body').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
 }
 
+//Remet le zoom à son état original
 let refreshZoom = function(zoom){
     zoomLevel = zoom;
     $('body').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
 }
 
-
+//Active la fonction de suppression d'un élément sur la page
 function activateDelete() {
 
   toggle = !toggle;
@@ -75,34 +81,28 @@ function activateDelete() {
        $('a').unbind('click', preventDefault);
 
        document.removeEventListener('mousemove', activateHoverAll, false);
-       /*prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);*/
        document.removeEventListener('click', deleteElementClicked, false);
    }
 
 }
 
+//Active le hover sur tous les éléments de la page
 function activateHoverAll(e){
 
     srcElement = e.target;
 
-        // Lets check if our underlying element is a IMG.
         if (prevDOM != srcElement && srcElement.nodeName == 'DIV' || srcElement.nodeName == 'IMG') {
-
-            // For NPE checking, we check safely. We need to remove the class name
-            // Since we will be styling the new one after.
             if (prevDOM != null) {
                 prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);
             }
 
-            // Add a visited class name to the element. So we can style it.
             srcElement.classList.add(MOUSE_VISITED_CLASSNAME);
 
-            // The current element is now the previous. So we can remove the class
-            // during the next iteration.
             prevDOM = srcElement;
         }
 }
 
+//Stocke les données et les envois au popup afin de supprimer l'élément
 function deleteElementClicked(e){
 
     var idElem = "null";
@@ -135,6 +135,7 @@ function deleteElementClicked(e){
 
 }
 
+
 function annulerDelete(){
     prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);
 }
@@ -143,7 +144,7 @@ function confirmerDelete(){
     prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);
     srcElement.remove();
 }
-
+//Permet de rétirer le comportement par défaut d'un lien
 function preventDefault(e){
     e.preventDefault();
 }

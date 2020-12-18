@@ -1,6 +1,7 @@
 var datas, stringtoShow, url;
 
 document.addEventListener('DOMContentLoaded', function(){
+    //Cherche les données stockés dans notre navigateur pour la suppression
     chrome.storage.sync.get(["datasDelete"], function(data){
         datas = data ;
         console.log(datas);
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementById('txt-area').value += stringtoShow;
     });
 
+    //Annule la suppression de l'élément
     document.getElementById('annuler').addEventListener('click', onClickAnnuler, false);
 
 
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
             });
     }
 
+    //Confirme la suppression de l'élément
     document.getElementById('confirmer').addEventListener('click', onClickConfirmer, false);
 
     function onClickConfirmer(){
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 }, false);
 
+//Quand la fenêtre va être fermée elle va envoyer un message
 $(window).bind("beforeunload", function(){
     chrome.tabs.query({currentWindow:false, active: true},
         function(tabs){
@@ -43,6 +47,7 @@ $(window).bind("beforeunload", function(){
         });
 });
 
+//Tranform l'url afin de garder que l'adresse du site
 function transformUrl(url){
     var urlTransformed = "";
     var urlSplitted;
@@ -68,6 +73,7 @@ function transformUrl(url){
     return urlTransformed;
 }
 
+//Créer le string qui va être afficher dans la textbox en ajoutant l'url + la class + l'id de l'élément
 function createStringtoShow(data, url) {
     var string = "";
 
